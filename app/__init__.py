@@ -1,5 +1,6 @@
 from ensurepip import bootstrap
 from flask import Flask
+import flask
 from app.requests import configure_request
 from flask_bootstrap import Bootstrap
 from config import config_options
@@ -7,7 +8,7 @@ from config import config_options
 bootstrap = Bootstrap
 
 def create_app(config_name):
-    app = flask(__name__)
+    app = flask (__name__)
     #Creating the app configurations
     app.config.from_object(config_options[config_name])
 

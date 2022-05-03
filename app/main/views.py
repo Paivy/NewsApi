@@ -12,3 +12,11 @@ def index():
     news = get_news()
     title = "KENYANEWS"
     return render_template("index.html",title = title, articles = news)
+
+# @main.route('/sources')
+# def sources():
+#     """
+#     View news page function that returns the news details page and its data
+#     """
+#     news = get_sources()
+#     return render_template('news.html', sources= news)

@@ -1,14 +1,13 @@
-from ensurepip import bootstrap
+# from ensurepip import bootstrap
 from flask import Flask
-import flask
-from app.requests import configure_request
+# from app.requests import configure_request
 from flask_bootstrap import Bootstrap
 from config import config_options
 
-bootstrap = Bootstrap
+bootstrap = Bootstrap()
 
 def create_app(config_name):
-    app = flask (__name__)
+    app = Flask (__name__)
     #Creating the app configurations
     app.config.from_object(config_options[config_name])
 
@@ -18,6 +17,6 @@ def create_app(config_name):
     from.main import main as main_blueprint
     app.register_blueprint(main_blueprint)
     #setting config
-    configure_request(app)
+    # configure_request(app)
 
     return app

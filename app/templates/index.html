@@ -1,24 +1,15 @@
-{% extends 'base.html' %} {% block content %}
-<h1 class="text-center">INTRIGUING NEWS</h1>
-<ul>
-  {% for article in articles %}
-  <div class="row-cols-1 row-cols-md-1 g-4 d-flex">
-    <div class="col p-3">
-      <div class="card p-3">
-        <img src="{{ article.urlToimage}}" class="card-img-top" alt="---" />
-        <div class="card-body">
-          <h3 class="card-title text-warning">{{article.title}}</h3>
-          <p class="card-text text-bold text-dark fs-3">
-            <strong>{{article.description}}</strong>
-          </p>
-          <p class="card-text fs-4">{{article.content}}</p>
-          <p class="card-text text-center text-info display-5">
-            {{article.publishedAt}}
-          </p>
-        </div>
-      </div>
-    </div>
+{% extends 'base.html'%} {% import 'macros.html' as macro %} {% block styles%}
+{{ super() }}
+<link rel="stylesheet" href="{{url_for('static',filename='css/styles.css')}}" />
+{% endblock %} {% block content %}
+<div class="container-fluid" id="allsources">
+  <div class="overlay content">
+    <h2 class="text-center font-weight-bold headers title2">General News</h2>
+    {{ macro.display_new_sources(general) }}
+    <h2 class="text-center font-weight-bold headers title2">Business News</h2>
+    {{ macro.display_new_sources(business) }}
+    <h2 class="text-center font-weight-bold headers title2">Sports news</h2>
+    {{ macro.display_new_sources(sports) }}
   </div>
-  {% end for %}
-</ul>
+</div>
 {% endblock %}

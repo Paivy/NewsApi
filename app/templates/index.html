@@ -1,15 +1,27 @@
-{% extends 'base.html'%} {% import 'macros.html' as macro %} {% block styles%}
+{% extends 'base.html'%}
+{% import 'macros.html' as macro %}
+{% block styles%}
 {{ super() }}
 <link rel="stylesheet" href="{{url_for('static',filename='css/styles.css')}}" />
-{% endblock %} {% block content %}
-<div class="container-fluid" id="allsources">
-  <div class="overlay content">
-    <h2 class="text-center font-weight-bold headers title2">General News</h2>
-    {{ macro.display_new_sources(general) }}
-    <h2 class="text-center font-weight-bold headers title2">Business News</h2>
-    {{ macro.display_new_sources(business) }}
-    <h2 class="text-center font-weight-bold headers title2">Sports news</h2>
-    {{ macro.display_new_sources(sports) }}
+{% endblock %}
+{% block content %}
+<div class="container-fluid bg-dark px-5">
+  <div class="row bg-light">
+    <div class="col-sm-10 col-lg-3 pl-0 bg-dark">
+      <div class="sticky-top">
+        <ul class="list-group list-group-flush">
+          <h5 class="list-group-item list-group-item-primary text-center text-dark">NewsApp Sources</h5>
+          {% for source in sources %}
+            <a class="text-white list-group-item list-group-item-action bg-dark" href="{{ url_for('main.source_articles',source=source.id) }}">{{source.name}}</a>
+          {% endfor %}
+        </ul>
+      </div>    
+    </div>
+    <div class="col-sm-12 col-lg-9">
+      <div class="row">
+        {{ macro.display_articles(articles) }}
+      </div>
+    </div>
   </div>
 </div>
 {% endblock %}

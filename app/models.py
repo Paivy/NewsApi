@@ -1,4 +1,4 @@
-class Articles:
+class Article:
     '''
     Article class to define Class Objects
     '''
@@ -28,18 +28,18 @@ def get_articles_reviews(cls,title):
         if review.title== title:
             article_results.append(review)
     return article_results
-class Sources:
+class Source:
     '''
     News class to define News Objects
     '''
-    def __init__(self,id,name,description,url,category,language,country):
+    def __init__(self,id,name):
         self.id = id
         self.name = name
-        self.description = description
-        self.url = url
-        self.category = category
-        self.language = language
-        self.country = country
+        # self.description = description
+        # self.url = url
+        # self.category = category
+        # self.language = language
+        # self.country = country
 class SourcesReview:
     source_reviews = []
     def __init__(self,id,title,url,review):

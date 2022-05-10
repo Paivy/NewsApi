@@ -18,7 +18,7 @@ class  ProdConfig(Config):
     pass
 
 class DevConfig(Config):
-    DEBUG = True
+    DEBUG = os.environ.get('DEBUG')
 
 config_options = {
     'development': DevConfig,
